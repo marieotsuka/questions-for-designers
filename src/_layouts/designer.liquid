@@ -9,7 +9,7 @@ layout: default.html
       {{ symbol }}
     </h2>
     <footer>
-      <div><a href="/">Questions for Designers</a></div>
+      <div><a href="{{ '/' | url}}">Questions for Designers</a></div>
       <div><a href="#title">{{name}}</a></div>
     </footer>
   </div>
@@ -24,7 +24,7 @@ layout: default.html
   {%- endfor -%}
 
   <footer>
-    <div><a href="/">Questions for Designers</a></div>
+    <div><a href="{{ '/' | url}}">Questions for Designers</a></div>
     <div><a href="#title">{{name}}</a></div>
   </footer>
 </div>

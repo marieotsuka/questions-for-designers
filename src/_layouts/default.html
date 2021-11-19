@@ -9,7 +9,7 @@
     <meta name="description" content="Questions for Designers">
 
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="{{'/assets/css/main.css' | url}}" rel="stylesheet">
     <style>
         :root{
             --main-color: #{{ color }};
@@ -19,8 +19,8 @@
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"></script>
-      <script src="/assets/js/gradient.js"></script>
-    <script src="/assets/js/script.js"></script>
+      <script src="{{'/assets/js/gradient.js' | url}}"></script>
+    <script src="{{'/assets/js/script.js' | url}}"></script>
 </head>
 <body class="{{color}}" id="{{id}}">
     {{ content }}

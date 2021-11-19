@@ -1,0 +1,30 @@
+---
+layout: default.html
+pagination:
+  data: questions
+  size: 1
+  alias: question
+permalink: "questions/{{ question.title | slug}}/"
+id: question
+---
+
+<main class="slides question-list">
+  <div class="card title" id="{{question.id}}">
+    <h2>
+      {{ question.title }}
+    </h2>
+  </div>
+  {% assign answers = collections.response | filterById:question.id %}
+  {%- for r in answers %}
+  <div class="card response" style=" --main-color: #{{r.data.color}}" id="{{r.data.name|slug}}">
+    <div class="content">
+      <a href="/designers/{{r.data.name|slug}}#{{question.id}}"><h2 class="heading">{{r.data.symbol}} {{r.data.name}}</h2></a>
+      {{r.templateContent}}
+    </div>
+  </div>
+  {%- endfor -%}
+  <footer>
+    <div><a href="/">Questions for Designers</a></div>
+    <div><a href="#title">{{question.title}}</a></div>
+  </footer>
+</div>

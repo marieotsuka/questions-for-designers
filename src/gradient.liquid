@@ -1,0 +1,26 @@
+---
+permalink: /assets/js/gradient.js
+---
+
+let colors = [
+{%- for des in collections.designer -%}
+	'{{des.data.color}}'{%- if forloop.last == false -%},{%- endif -%}
+{%- endfor -%}
+]
+
+const count = colors.length;
+let inc = 100/count;
+let formula = 'linear-gradient(45deg, ';
+
+// build color string for gradient
+var i = 0;
+while (i < count) {
+    formula += '#' + colors[i];
+    if (i < count-1){
+     formula += ', '
+    }
+    i++
+}
+
+formula += ')';
+console.log(formula);

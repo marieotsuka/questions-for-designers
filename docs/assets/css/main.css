@@ -1,0 +1,94 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Basic type and layout
+# Navigation
+
+-----------------------------------------------*/
+/* reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+/* variables */
+:root { --text: rgb(0,0,0); --white: rgb(255,255,255); --main-color: #555555; --secondary-color: #999999; --pad: 50px; --runnersize: 0.5em; }
+
+/* Basic Type */
+body, p, h1, h2, h3, h4, code { font-family: PingFangSC-Regular, Arial, Helvetica, sans-serif; font-size: 40px; line-height: 1.2; font-weight: 200; margin: 0; padding: 0; }
+
+code { font-family: 'EversonMono', "Courier New", Courier, monospace; font-size: 36px; line-height: 48px; }
+
+a { text-decoration: none; }
+
+figcaption { font-size: 22px; line-height: 30px; }
+
+sup, #note-text { font-family: PingFangSC-Semibold, Arial, Helvetica, sans-serif; font-size: 22px; line-height: 30px; hyphens: auto; }
+
+/* page */
+body { color: var(--text); background: var(--main-color); }
+
+/*---------------------
+HOMEPAGE 
+-----------------------*/
+#home { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+#home h1 { font-size: 8vw; margin-top: -0.5em; color: var(--white); }
+
+#home .title:hover { cursor: pointer; }
+
+.title-panel { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; padding: 1em; overflow-y: scroll; background: var(--white); color: var(--text); display: none; list-style-type: none; }
+
+.title-panel#questions { mix-blend-mode: lighten; }
+
+.title-panel#questions a { color: var(--black); }
+
+.title-panel li { margin-bottom: 1em; }
+
+.title-panel li:hover { cursor: pointer; -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */ -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; }
+
+[data-toggle=hidden] .title-panel { display: none !important; }
+
+[data-toggle=questions] #questions { display: block; }
+
+[data-toggle=questions] h1, [data-toggle=questions] #designers { display: none; }
+
+[data-toggle=designers] #designers { display: block; }
+
+[data-toggle=designers] h1, [data-toggle=designers] #questions { display: none; }
+
+.outline, #home .title:hover { color: white; -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */ -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: white; }
+
+/*---------------------
+RESPONSES 
+-----------------------*/
+footer { font-size: var(--runnersize); position: fixed; bottom: 0; width: 100vw; display: flex; justify-content: space-between; padding: calc( var(--pad) * 0.5) var(--pad); }
+
+footer a { color: var(--main-color); }
+
+.slides { display: flex; width: 100%; height: 100vh; overflow-x: hidden; overflow-x: auto; scroll-snap-type: x mandatory; }
+
+.title { color: white; }
+
+.title footer { z-index: 20; position: absolute; left: 0; }
+
+.title footer a { color: white; }
+
+.card { min-height: 100vh; width: 100vw; flex-shrink: 0; padding: var(--pad); position: relative; overflow: hidden; scroll-snap-align: start; }
+
+.card .heading { font-size: var(--runnersize); margin-bottom: 1em; }
+
+.card#cover { background-color: var(--main-color); }
+
+.card.response { background: var(--white); color: var(--main-color); }
+
+.card.response a { color: var(--main-color); text-decoration: none; }
+
+.card img, .card video { display: block; max-height: calc(100vh - 200px); max-width: calc(100vw - 200px); width: auto; height: auto; margin: auto; }
+
+.card a.hover, .card .hover, .card sup { color: var(--main-color); display: inline-block; border: 2px solid var(--main-color); padding: 2px 15px; border-radius: 30px; margin: 2px 0px; cursor: pointer; }
+
+figcaption { text-align: center; display: block; font-weight: normal; text-decoration: none; margin: auto; }
+
+sup { border-width: 3px; margin: 0px 0px 0px 8px; }
+
+sup:hover { background-color: var(--main-color); color: white; border: 3px solid white; }

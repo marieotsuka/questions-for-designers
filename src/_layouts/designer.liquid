@@ -1,0 +1,30 @@
+---
+layout: default.html
+---
+
+<main class="slides response-list">
+  <div class="card title" id="cover" notes="">
+    <h2>
+      {{ name }}<br>
+      {{ symbol }}
+    </h2>
+    <footer>
+      <div><a href="/">Questions for Designers</a></div>
+      <div><a href="#title">{{name}}</a></div>
+    </footer>
+  </div>
+  {% assign responses = collections.response | filterByDesigner: name | sortById %}
+  {%- for r in responses %}
+  <div class="card response" id="{{r.data.id}}">
+    <div class="content">
+      <h2 class="heading">{{r.data.title}}</h2>
+      {{r.templateContent}}
+    </div>
+  </div>
+  {%- endfor -%}
+
+  <footer>
+    <div><a href="/">Questions for Designers</a></div>
+    <div><a href="#title">{{name}}</a></div>
+  </footer>
+</div>

@@ -1,5 +1,5 @@
 
-let colors = ['0055ff','00FF00','B8860B']
+let colors = ['0055ff','00FF00','B8860B','FF0000']
 
 const count = colors.length;
 let inc = 100/count;

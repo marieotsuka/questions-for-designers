@@ -13,12 +13,14 @@ module.exports = eleventyConfig => {
     return vals.sort((a, b) => Math.sign(a.data.id - b.data.id))
   }
 
+  // filtering responses by question
   function filterById(collection, id){
     if (!id) return collection;
     const filtered = collection.filter(item => item.data.id == id)
     return filtered;
   }
 
+  // filtering responses by designer
   function filterByDesigner(collection, name) {
     if (!name) return collection;
     const filtered = collection.filter(item => item.data.name == name)

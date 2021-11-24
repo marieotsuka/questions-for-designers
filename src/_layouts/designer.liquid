@@ -16,8 +16,11 @@ layout: default.html
   {% assign responses = collections.response | filterByDesigner: name | sortById %}
   {%- for r in responses %}
   <div class="card response" id="{{r.data.id}}">
+    {%- assign qindex = r.data.id | minus: 1 -%}
+    {%- assign question = questions[qindex].title -%}
     <div class="content">
-      <h2 class="heading">{{r.data.title}}</h2>
+      {%- capture path -%}/questions/q{{r.data.id}}{%- endcapture -%}
+      <a href="{{path | url}}"><h2 class="heading">{{question}}</h2></a>
       {{r.templateContent}}
     </div>
   </div>

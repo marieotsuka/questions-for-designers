@@ -21,11 +21,9 @@ Note: `.md` files, unless marked with `permalink: false`, will generate an outpu
 On the other hand, `.json` files do not automatically generate an output, unless tied to a template file that specifies an output format.
 
 ### Questions
-Questions are managed in a global data folder (`_data`) in the `questions.json` file.
-Each question requires an `id` and `title`.
+Location: `src/_data/questions.json`
 
-`id`: key for this question. This id is used to link responses to their respective question.
-`title`: the question text. Although there may have been slight variations in the questions asked depending on the designer, but we will be displaying the same text for each, so we may need to rephrase some questions so that they work across the responses.
+- **Data file** `questions.json` This file lists all of the questions. Each question requires an `id` and `title`.
 
 ```json
 {
@@ -34,8 +32,16 @@ Each question requires an `id` and `title`.
 },
 ```
 
+| Key | Description |
+| --- | ----------- |
+| `id` | key for this question. This `id` is used to link responses to their respective question. The data file array should also be ordered by the `id`. |
+| `title` | the question text. Although there may have been slight variations in the questions asked depending on the designer, but we will be displaying the same text for each, so we may need to rephrase some questions so that they work across the responses.|
+
+
 ### Responses
-Responses are grouped by designer in each designer folder.
+Location: `src/designers`
+
+Responses are grouped by the designer (slug) in each designer folder.
 Each folder consists of the following files:
 
 - **Index file** `index.md` This file ensures that the designer page is published. It is the same for all folders.

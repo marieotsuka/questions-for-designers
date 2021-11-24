@@ -38,11 +38,9 @@ Each question requires an `id` and `title`.
 Responses are grouped by designer in each designer folder.
 Each folder consists of the following files:
 
-- `index.md`
-This file ensures that the designer page is published. It is the same for all folders.
+- **Index file** `index.md` This file ensures that the designer page is published. It is the same for all folders.
 
-- `designer-name.json`
-This file contains the meta data for each designer in `json` format.
+- **Data file** `designer-name.json` This file contains the meta data for each designer in `json` format.
 
 ```json
 {
@@ -52,12 +50,13 @@ This file contains the meta data for each designer in `json` format.
 }
 ```
 
-`name`: Name of the designer
-`symbol`: The emoji they picked
-`color`: The hex code of their color (without the `#`)
+| Key | Description |
+| --- | ----------- |
+| `name` | Name of the designer |
+| `symbol` | The emoji they picked |
+| `color` | The hex code of their color (without the `#`) |
 
-- Response files (`r1.md`, `r2.md`, etc.)
-Each response is stored in its own `md` file. The following frontmatter is required for all files.
+- **Response files** (`r1.md`, `r2.md`, etc.) Each response is stored in its own `md` file. The following frontmatter is required for all files.
 
 ```yaml
 ---
@@ -67,9 +66,11 @@ id: 2
 ---
 ```
 
-`tags`: This should always be `response`. This makes sure that the response can be queried with this tag.
-`permalink`: This should always be `false`. This signals that each response does not need its own page generated.
-`id`: This is the numerical key that corresponds to the relevant question, assigned in the `_data/questions.json` file. The `id` is also responsible for ordering the responses in the `designer` view. Image slides, for example, may not correspond to a particular question, but can be inserted in-between slides with a number between them (i.e. `1.1`, `1.2`)
+| Key | Description |
+| --- | ----------- |
+|`tags` | This should always be `response`. This makes sure that the response can be queried with this tag.|
+|`permalink` | This should always be `false`. This signals that each response does not need its own page generated.|
+|`id`| This is the numerical key that corresponds to the relevant question, assigned in the `_data/questions.json` file. The `id` is also responsible for ordering the responses in the `designer` view. Image slides, for example, may not correspond to a particular question, but can be inserted in-between slides with a number between them (i.e. `1.1`, `1.2`)|
 
 
 ## Templates and Outputs
@@ -88,13 +89,13 @@ It loops through the questions and designers and lists them.
 The collection of responses to a particular question uses the layout `question.liquid`.
 It filters all responses by the question id, and lists them. (Currently in alphabetical order of the designer name; perhaps this can be randomized.)
 
-Each question page is generated into the output folder determined by the `permalink` frontmatter, as `questions/q{{ question.id }}/`. 
+Each question page is generated into the output folder determined by the `permalink` frontmatter of the layout file, as `questions/q{{ question.id }}/`, i.e. `questions/q1/index.html`, `questions/q2/index.html` ...
 
 ### Designer view
 The collection of responses by a particular designer uses the layout in `_layouts/designer.liquid`.
 It filters all responses by the designer name, and displays them in order of the response `id`s.
 
-Each designer page is genrated into the output folder `designers/name-of-designer/`.
+Each designer page is genrated into the output folder `designers/name-of-designer/`, i.e. `designers/hyperlink-press/index.html` ...
 
 
 

@@ -9,12 +9,13 @@ id: home
 
 <ul class="title-panel" id="questions">
 {% for q in questions %}
-	<li class="question"><a href="questions/q{{q.id}}">{{q.title}}</a></li>
+	{%- capture qpath -%}questions/q{{q.id}}{%- endcapture -%}
+	<li class="question"><a href="{{ qpath | url}} ">{{q.title}}</a></li>
 {% endfor %}
 </ul>
 <ul class="title-panel" id="designers">
 {% for d in collections.designer %}
-	<li class="designer"><a href="{{d.url}}"><span style="color: #{{d.data.color}}">{{d.data.symbol}} {{d.data.name}}</span></a></li>
+	<li class="designer"><a href="{{d.url | url}}"><span style="color: #{{d.data.color}}">{{d.data.symbol}} {{d.data.name}}</span></a></li>
 {% endfor %}
 </ul>
 </main>

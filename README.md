@@ -13,6 +13,15 @@ The site should be loaded up and listening to changes on `http://localhost:8080`
 - Compile for production via `npm run build`
 Use this command prior to pushing to Github. We use Github Pages to host the compiled files in the output `docs` folder.
 
+## General file structure
+
+| Folder | Description |
+| --- | ----------- |
+| `src` | Input folder, containing content and layout templates |
+| `docs` | Output folder, containing the generated HTML files |
+| `.eleventy.js` | 11ty configuration file. This file also contains the custom filters to gather and sort the various data sources |
+
+
 ## Content
 
 The content for the site is stored in a few different formats to allow for flexible navigation.
@@ -21,7 +30,7 @@ Note: `.md` files, unless marked with `permalink: false`, will generate an outpu
 On the other hand, `.json` files do not automatically generate an output, unless tied to a template file that specifies an output format.
 
 ### Questions
-Location: `src/_data/questions.json`
+> Location: `src/_data/questions.json`
 
 - **Data file** `questions.json` This file lists all of the questions. Each question requires an `id` and `title`.
 
@@ -39,7 +48,7 @@ Location: `src/_data/questions.json`
 
 
 ### Responses
-Location: `src/designers`
+> Location: `src/designers`
 
 Responses are grouped by the designer (slug) in each designer folder.
 Each folder consists of the following files:
@@ -88,18 +97,22 @@ There are several ways data is manifested in the template layouts.
 
 
 ### Homepage
-The homepage layout is determined by `index.liquid`.
-It loops through the questions and designers and lists them.
+> Layout file: `src/index.liquid`
+
+This is the site index. It loops through the questions and designers and lists them.
 
 ### Question view
-The collection of responses to a particular question uses the layout `question.liquid`.
+> Layout file: `src/question.liquid`
+
+The collection of responses to a particular question. 
 It filters all responses by the question id, and lists them. (Currently in alphabetical order of the designer name; perhaps this can be randomized.)
 
 Each question page is generated into the output folder determined by the `permalink` frontmatter of the layout file, as `questions/q{{ question.id }}/`, i.e. `questions/q1/index.html`, `questions/q2/index.html` ...
 
 ### Designer view
-The collection of responses by a particular designer uses the layout in `_layouts/designer.liquid`.
-It filters all responses by the designer name, and displays them in order of the response `id`s.
+> Layout file: `_layouts/designer.liquid`
+
+The collection of responses by a particular designer. It filters all responses by the designer name, and displays them in order of the response `id`s.
 
 Each designer page is genrated into the output folder `designers/name-of-designer/`, i.e. `designers/hyperlink-press/index.html` ...
 

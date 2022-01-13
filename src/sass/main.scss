@@ -6,6 +6,7 @@
 
 -----------------------------------------------*/
 
+@import "mixins"; 
 
 /* reset */
 
@@ -26,13 +27,23 @@ html, body {
 
 :root {
 	--text: rgb(0,0,0);
-	--white: rgb(255,255,255);
+	--white: rgb(250,250,250);
 	--main-color: #555555;
 	--secondary-color: #999999;
+	--transparency: rgba(250,250,250,0);
 
 	--pad: 50px;
 
+	--supsize: 0.5em;
 	--runnersize: 0.5em;
+
+	@include at-media(mobile) {
+		
+		--pad: 20px;
+		
+		--runnersize: 0.75em;
+		--supsize: 0.5em;
+	}		
 }
 
 
@@ -45,6 +56,11 @@ body, p, h1, h2, h3, h4, code {
 	font-weight: 200;   
 	margin: 0;
 	padding: 0;
+
+	@include at-media(mobile) {
+		font-size: 28px;	
+	}		
+
 }
 
 code {
@@ -64,8 +80,7 @@ figcaption {
 
 sup, #note-text {
 	font-family: PingFangSC-Semibold, Arial, Helvetica, sans-serif;
-	font-size: 22px;
-	line-height: 30px;
+	font-size: var(--supsize);
 	hyphens: auto;
 }
 
@@ -74,7 +89,7 @@ sup, #note-text {
 
 body {
 	color: var(--text);
-	background: var(--main-color);
+	background: var(--main-color);		
 }
 
 
@@ -94,7 +109,7 @@ HOMEPAGE
 		margin-top: -0.5em;
 		color: var(--white);
 	}
-	.title{
+	.title{		
 		&:hover{
 			cursor: pointer;
 			@extend .outline;
@@ -161,16 +176,27 @@ HOMEPAGE
 /*---------------------
 RESPONSES 
 -----------------------*/
+
 footer{
 	font-size: var(--runnersize);
 	position: fixed;
 	bottom: 0;
 	width: 100vw;
 	display: flex;
-	justify-content: space-between;
-	padding: calc( var(--pad) * 0.5) var(--pad);
+	justify-content: end;
+	padding: calc( var(--pad) * 2) var(--pad) calc( var(--pad) * .5);
+	background: linear-gradient(180deg, var(--transparency) 0%, var(--white) 40%);
+	z-index: 1;
+
+	@include at-media(mobile) {
+		padding: calc( var(--pad) * 4) var(--pad) calc( var(--pad) * .5);
+	}
+
 	a {
 		color: var(--main-color);
+	}
+	div {
+		flex: 1 1;
 	}
 }
 
@@ -184,7 +210,8 @@ footer{
 }
 
 .title{
-	color:  white;
+	color:  white;		
+
 	footer{
 		z-index: 20;
 		position: absolute;
@@ -199,7 +226,7 @@ footer{
 	min-height: 100vh;
 	width: 100vw;
 	flex-shrink: 0;	
-	padding: var(--pad);
+	// padding: var(--pad);
 	position: relative;
 	overflow: hidden;
 	scroll-snap-align: start;
@@ -210,15 +237,59 @@ footer{
 	}
 
 	&#cover{
-		background-color: var(--main-color);
+		background: radial-gradient(200% 100% at 50% 100%, var(--white) 0%, var(--main-color) 40%);	
+		padding: var(--pad);	
+		position: relative;
+		z-index: 10;
+
+		@include at-media(mobile) {
+			background: radial-gradient(130% 100% at 50% 100%, var(--white) 20%, var(--main-color) 100%);
+		}
+
+		footer {
+			background: transparent;
+
+			a {
+				color: var(--main-color);				
+			}
+		}
+
 	}
+
+	&.title {
+		padding: var(--pad);		
+		position: relative;
+		z-index: 10;
+
+		footer {
+			background: transparent;
+
+			a {
+				color: var(--main-color);				
+			}
+		}
+	
+	}
+
 	&.response{
 		background: var(--white);
 		color: var(--main-color);
 
 		a {
 			color: var(--main-color);
-			text-decoration: none;
+			text-decoration-line: underline;			
+			text-decoration-style: dotted;
+		}
+
+		.content {
+			overflow: scroll;
+			height: 100%;
+			padding: var(--pad);
+			padding-bottom: calc(var(--pad)*3);
+
+			@include at-media(mobile) {
+				padding-bottom: 20vh;
+			}
 		}
 	}
 
@@ -232,7 +303,7 @@ footer{
 	}
 
 
-	a.hover, .hover, sup {
+	a.hover, .hover {
 		color: var(--main-color);
 		display: inline-block;
 		border: 2px solid var(--main-color);
@@ -250,12 +321,26 @@ figcaption {
 	margin: auto;
 }
 sup {
-	border-width: 3px;	
-	margin: 0px 0px 0px 8px;
+	color: var(--main-color);
+	border: 3px solid var(--main-color);
+	padding: 2px 12px;
+	border-radius: 30px;
+	cursor: pointer;
+	margin: 0px 0px 0px 2px;
+
+	@include at-media(mobile) {
+		padding: 2px 8px;
+		border: 2px solid var(--main-color);
+	}
 }
 
 sup:hover {
 	background-color: var(--main-color);
 	color: white;
-	border: 3px solid white;	
+	border: 3px solid var(--white);	
+
+	@include at-media(mobile) {
+		border: 2px solid var(--white);
+	}
+
 }

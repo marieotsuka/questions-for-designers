@@ -4,6 +4,7 @@ $(function(){
 	
 	//apply gradient calculated by gradient.js
 	$('body').css('background', formula);
+	$('.card.title:not(#cover)').css('background', formula);
 
 	//toggle display of questions / designers
 	//on title page
@@ -20,4 +21,6 @@ $(function(){
  			$('main').attr('data-toggle', 'hidden');
  		}
 	});
+
+	$
 });

@@ -13,6 +13,10 @@ id: question
     <h2>
       {{ question.title }}
     </h2>
+    <footer>
+      <div><a href="{{ '/' | url}}">Questions for Designers</a></div>
+      <div><a href="#title">{{question.title}}</a></div>
+    </footer>    
   </div>
   {% assign answers = collections.response | filterById:question.id %}
   {%- for r in answers %}

@@ -1,0 +1,13 @@
+@mixin at-media($size) {
+  @if $size == mobile_sm {
+    @media (max-width: 320px) { @content; }
+  } @else if $size == mobile {
+    @media (max-width: 414px) { @content; }
+  } @else if $size == tablet_sm {
+    @media (max-width: 768px) { @content; }
+  } @else if $size == tablet {
+    @media (max-width: 1024px) { @content; }
+  } @else if $size == desktop_lg {
+    @media (min-width: 1560px) { @content; }
+  } 
+}
